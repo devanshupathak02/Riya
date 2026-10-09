@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riya Chaudhary | Financial & Risk Analyst</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2c5282;
+            --accent-color: #3182ce;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --white: #ffffff;
+        }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text-dark); background-color: var(--white); }
+        
+        /* Navigation */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 1rem 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-color); }
+
+        /* Hero Section */
+        .hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: var(--white); padding-top: 80px; }
+        .hero-container { max-width: 1200px; margin: 0 auto; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
+        .hero-content .title { font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; opacity: 0.9; }
+        .visa-info { background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #48bb78; }
+        .visa-info p { font-size: 0.9rem; margin: 0.25rem 0; }
+        .value-prop { font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8; }
+        .cta-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .btn-primary { background: var(--white); color: var(--primary-color); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+        .btn-secondary { background: transparent; color: var(--white); border: 2px solid var(--white); }
+        .btn-secondary:hover { background: var(--white); color: var(--primary-color); }
+        .hero-image { display: flex; justify-content: center; align-items: center; }
+        .profile-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 3rem; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2); }
+        .profile-icon { font-size: 5rem; margin-bottom: 1rem; }
+
+        /* Sections */
+        section { padding: 5rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 1rem; text-align: center; }
+        .section-subtitle { text-align: center; color: var(--text-light); margin-bottom: 3rem; font-size: 1.1rem; }
+
+        /* Summary Section */
+        .summary { background: var(--bg-light); }
+        .summary-content { max-width: 900px; margin: 0 auto; text-align: center; font-size: 1.1rem; line-height: 1.8; color: var(--text-dark); }
+        .target-roles { margin-top: 2rem; padding: 1.5rem; background: var(--white); border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); }
+        .target-roles strong { color: var(--primary-color); }
+
+        /* Competencies */
+        .competencies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .competency-card { background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); border-top: 4px solid var(--accent-color); transition: transform 0.3s, box-shadow 0.3s; }
+        .competency-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+        .competency-card h3 { color: var(--primary-color); margin-bottom: 1rem; font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem; }
+        .competency-card ul { list-style: none; }
+        .competency-card li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+        .competency-card li:before { content: "▸"; position: absolute; left: 0; color: var(--accent-color); font-weight: bold; }
+
+        /* Experience */
+        .experience { background: var(--bg-light); }
+        .experience-card { background: var(--white); padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); margin-bottom: 2rem; }
+        .experience-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+        .experience-title h3 { color: var(--primary-color); font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .experience-meta { color: var(--text-light); font-size: 0.95rem; }
+        .achievement-list { list-style: none; }
+        .achievement-list li { padding: 0.75rem 0; padding-left: 2rem; position: relative; line-height: 1.6; }
+        .achievement-list li:before { content: "✓"; position: absolute; left: 0; color: #48bb78; font-weight: bold; font-size: 1.2rem; }
+        .metric { background: #ebf8ff; color: var(--accent-color); padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 600; }
+
+        /* Dissertation Section */
+        .dissertation { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: var(--white); }
+        .dissertation .section-title { color: var(--white); }
+        .dissertation .section-subtitle { color: rgba(255, 255, 255, 0.8); }
+        .dissertation-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 3rem; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.2); }
+        .dissertation-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+        .headline-finding { background: rgba(255, 255, 255, 0.15); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; border-left: 4px solid #48bb78; }
+        .key-figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .figure-box { background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center; }
+        .figure-number { font-size: 2.5rem; font-weight: 700; color: #48bb78; display: block; }
+        .figure-label { font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem; }
+
+        /* Projects */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .project-card { background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); border-left: 4px solid var(--accent-color); transition: transform 0.3s; }
+        .project-card:hover { transform: translateX(5px); }
+        .project-header { margin-bottom: 1.5rem; }
+        .project-header h3 { color: var(--primary-color); font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .project-meta { color: var(--text-light); font-size: 0.9rem; }
+        .project-outcomes { list-style: none; }
+        .project-outcomes li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+        .project-outcomes li:before { content: "→"; position: absolute; left: 0; color: var(--accent-color); }
+
+        /* Education */
+        .education { background: var(--bg-light); }
+        .education-timeline { max-width: 800px; margin: 0 auto; }
+        .education-item { background: var(--white); padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); position: relative; padding-left: 3rem; }
+        .education-item:before { content: ""; position: absolute; left: 1rem; top: 2rem; width: 12px; height: 12px; background: var(--accent-color); border-radius: 50%; }
+        .education-item h3 { color: var(--primary-color); margin-bottom: 0.5rem; }
+        .education-meta { color: var(--text-light); font-size: 0.95rem; margin-bottom: 0.5rem; }
+        .education-details { color: var(--text-dark); font-size: 0.95rem; }
+
+        /* Certifications */
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .cert-card { background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); text-align: center; transition: transform 0.3s; }
+        .cert-card:hover { transform: translateY(-5px); }
+        .cert-icon { font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem; }
+        .cert-card h3 { color: var(--primary-color); margin-bottom: 0.5rem; }
+        .cert-date { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; }
+        .cert-description { font-size: 0.95rem; line-height: 1.6; }
+
+        /* Leadership */
+        .leadership { background: var(--bg-light); }
+        .leadership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .leadership-card { background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); }
+        .leadership-card h3 { color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.2rem; }
+        .leadership-meta { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; }
+
+        /* Contact/Footer */
+        .contact { background: var(--primary-color); color: var(--white); text-align: center; }
+        .contact .section-title { color: var(--white); }
+        .contact-info { display: flex; justify-content: center; gap: 3rem; margin: 2rem 0; flex-wrap: wrap; }
+        .contact-item { display: flex; align-items: center; gap: 0.5rem; }
+        .contact-item i { font-size: 1.5rem; }
+        .contact-item a { color: var(--white); text-decoration: none; font-size: 1.1rem; }
+        .download-cv { margin-top: 2rem; }
+        .footer { background: #0d1b2a; color: rgba(255, 255, 255, 0.6); text-align: center; padding: 2rem; font-size: 0.9rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .competencies-grid, .projects-grid, .cert-grid, .leadership-grid { grid-template-columns: 1fr; }
+            .contact-info { flex-direction: column; gap: 1rem; }
+        }
+
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate { animation: fadeInUp 0.6s ease-out; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Riya Chaudhary</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#competencies">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#dissertation">Research</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Riya Chaudhary</h1>
+                <p class="title">Financial & Risk Analyst</p>
+                
+                <div class="visa-info">
+                    <p><i class="fas fa-passport"></i> <strong>Visa Status:</strong> Student visa → 2-year Graduate visa (Oct 2026)</p>
+                    <p><i class="fas fa-check-circle"></i> <strong>Sponsorship:</strong> Not currently required</p>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> London, UK</p>
+                </div>
+
+                <p class="value-prop">
+                    MBA FinTech + CA Foundation qualifier with hands-on DCF/credit-risk experience via JPMorgan & Goldman Sachs job simulations. Proficient in financial analysis, regulatory compliance, and data-driven decision making.
+                </p>
+
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Get in Touch
+                    </a>
+                    <a href="#" class="btn btn-secondary" onclick="alert('CV download would be linked here')">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="profile-card">
+                    <div class="profile-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h2>FinTech & Finance Professional</h2>
+                    <p style="margin-top: 1rem; opacity: 0.9;">Specializing in Financial Analysis, Risk Management & Regulatory Compliance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary Section -->
+    <section id="about" class="summary">
+        <div class="container">
+            <h2 class="section-title">Professional Summary</h2>
+            <div class="summary-content">
+                <p>
+                    MBA FinTech Management candidate and CA Foundation qualifier with a B.Com foundation in accounting, financial reporting and audit. Experienced in financial statement analysis, payments and bank reconciliation, bookkeeping, and regulatory/AML-KYC compliance, with applied exposure to credit risk assessment, M&A valuation (DCF) and financial modelling through JPMorgan Chase and Goldman Sachs job simulations.
+                </p>
+                <p style="margin-top: 1rem;">
+                    Proficient in Excel, SQL and Power BI for data analysis and reporting.
+                </p>
+                
+                <div class="target-roles">
+                    <strong>Seeking graduate roles in:</strong> FinTech • Investment Banking • Financial Analysis • Accounting
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Competencies -->
+    <section id="competencies">
+        <div class="container">
+            <h2 class="section-title">Core Competencies</h2>
+            <p class="section-subtitle">Comprehensive skill set across finance, compliance, and technology</p>
+            
+            <div class="competencies-grid">
+                <div class="competency-card">
+                    <h3><i class="fas fa-calculator"></i> Financial & Risk Analysis</h3>
+                    <ul>
+                        <li>Financial Modelling & Valuation (DCF)</li>
+                        <li>Credit Risk Analysis</li>
+                        <li>Financial Statement & Ratio Analysis</li>
+                        <li>Budgeting & Forecasting</li>
+                        <li>M&A Valuation</li>
+                    </ul>
+                </div>
+
+                <div class="competency-card">
+                    <h3><i class="fas fa-shield-alt"></i> Regulatory & Compliance</h3>
+                    <ul>
+                        <li>AML/KYC Compliance</li>
+                        <li>FCA/PRA/NCA Regulatory Frameworks</li>
+                        <li>FATF Global Standards</li>
+                        <li>CDD, EDD, SAR Preparation</li>
+                        <li>Transaction Monitoring & Risk-Based Compliance</li>
+                        <li>Bank & Payments Reconciliation</li>
+                    </ul>
+                </div>
+
+                <div class="competency-card">
+                    <h3><i class="fas fa-laptop-code"></i> Tools & Data Analytics</h3>
+                    <ul>
+                        <li>Advanced Excel & Financial Modelling</li>
+                        <li>SQL & Database Management</li>
+                        <li>Power BI & Data Visualization</li>
+                        <li>Bloomberg Terminal</li>
+                        <li>Digital Banking Systems</li>
+                        <li>AI Productivity Tools</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">Hands-on experience in accounting and financial operations</p>
+            
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-title">
+                        <h3>Accounting Intern</h3>
+                        <p class="experience-meta">Ashutosh Agrawal & Co., India</p>
+                    </div>
+                    <div class="experience-meta">
+                        <i class="far fa-calendar"></i> Jul 2024 – Sep 2024
+                    </div>
+                </div>
+                
+                <ul class="achievement-list">
+                    <li>Prepared, reviewed and reconciled financial statements and management reports for <span class="metric">8+ clients</span>, maintaining <span class="metric">100% regulatory compliance</span> across all submissions</li>
+                    <li>Maintained stock registers and transaction records across multiple client portfolios; coordinated financial documentation between clients and suppliers, achieving <span class="metric">zero discrepancy</span> in monthly closing</li>
+                    <li>Streamlined bookkeeping workflows and supported audit preparation, cutting reconciliation turnaround by <span class="metric">20%</span> through process standardisation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dissertation Section -->
+    <section id="dissertation" class="dissertation">
+        <div class="container">
+            <h2 class="section-title">Flagship Research Project</h2>
+            <p class="section-subtitle">MBA Dissertation - Applying investment banking frameworks to real-world fintech challenges</p>
+            
+            <div class="dissertation-card">
+                <h3 class="dissertation-title">Compliance Risk and Fintech Valuation: A Critical Case Study of Revolut Through Investment Banking Due Diligence Frameworks</h3>
+                
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                    Applies investment banking due diligence (Rosenbaum & Pearl, 2022) and valuation frameworks (DCF, comparable company analysis, venture capital method) to a real, live regulatory/valuation puzzle.
+                </p>
+
+                <div class="headline-finding">
+                    <strong>Key Finding:</strong> Despite a €3.5m AML fine from the Bank of Lithuania (Apr 2025), Revolut's valuation grew from $45bn (Aug 2024) to a reported $115bn (Jul 2026) — no sustained valuation discount was observed from the compliance failures.
+                </div>
+
+                <div class="key-figures">
+                    <div class="figure-box">
+                        <span class="figure-number">+156%</span>
+                        <p class="figure-label">Valuation Growth<br>(Aug 2024 → Jul 2026)</p>
+                    </div>
+                    <div class="figure-box">
+                        <span class="figure-number">+288%</span>
+                        <p class="figure-label">Pre-tax Profit Growth<br>(2023 → 2025)</p>
+                    </div>
+                    <div class="figure-box">
+                        <span class="figure-number">0.005-0.008%</span>
+                        <p class="figure-label">AML Fine as % of Valuation<br>(2025)</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h4 style="margin-bottom: 1rem;">Research Questions Addressed:</h4>
+                    <ul style="list-style: none; line-height: 2;">
+                        <li><i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i> Confirmed a genuine gap between practitioner assumption that AML failures damage valuation and limited rigorous evidence testing it</li>
+                        <li><i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i> Applied due diligence and valuation frameworks to Revolut's disclosed record: no sustained valuation discount observed</li>
+                        <li><i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i> Found that growth expectations and evolving interpretation of regulatory signals explain the divergence</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 2rem; text-align: center;">
+                    <a href="#" class="btn btn-primary" style="background: white; color: var(--primary-color);" onclick="alert('Full dissertation PDF would be available for download')">
+                        <i class="fas fa-file-pdf"></i> View Full Dissertation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applied Projects -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Applied Projects & Simulations</h2>
+            <p class="section-subtitle">Practical application of financial analysis and risk management skills</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>JPMorgan Chase - Investment Banking Job Simulation</h3>
+                        <p class="project-meta"><i class="far fa-calendar"></i> Feb 2026 | Forage Platform</p>
+                    </div>
+                    <ul class="project-outcomes">
+                        <li>Identified an M&A target aligned to client strategic and financial criteria</li>
+                        <li>Built a DCF valuation model and stress-tested it against a competitor bid and supply-chain disruption</li>
+                        <li>Produced a client-ready 2-page summary covering company profile and auction process</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Goldman Sachs - Risk Management Job Simulation</h3>
+                        <p class="project-meta"><i class="far fa-calendar"></i> Jun 2026 | Forage Platform</p>
+                    </div>
+                    <ul class="project-outcomes">
+                        <li>Performed individual credit risk analysis using quantified financial data to evaluate personal finance and real estate lending scenarios</li>
+                        <li>Applied critical thinking and quantitative analysis to assess financial implications and inform risk-based lending decisions</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Financial Analysis - Reliance Industries Limited</h3>
+                        <p class="project-meta"><i class="far fa-calendar"></i> 2024 | Self-Directed Project</p>
+                    </div>
+                    <ul class="project-outcomes">
+                        <li>Conducted a 3-year financial analysis (FY2022–24) using published annual reports, evaluating 12+ ratios across profitability, liquidity and leverage</li>
+                        <li>Analyzed 5 revenue segments across retail, energy and telecom to assess market positioning and deliver data-driven recommendations for shareholder value improvement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">Strong academic foundation in finance, accounting, and fintech</p>
+            
+            <div class="education-timeline">
+                <div class="education-item">
+                    <h3>MBA, FinTech Management (Level 7)</h3>
+                    <p class="education-meta"><i class="fas fa-university"></i> University of East London, UK | Sep 2026</p>
+                    <p class="education-details">Modules: FinTech Strategy, Business Insight Project, Next-Generation Marketing, Strategy & Leadership, Mental Capital</p>
+                </div>
+
+                <div class="education-item">
+                    <h3>Bachelor of Commerce (B.Com)</h3>
+                    <p class="education-meta"><i class="fas fa-university"></i> Dr Bhim Rao Ambedkar University, India | 2022 – 2025</p>
+                    <p class="education-details">Accounting, taxation, financial reporting, auditing and financial statement analysis</p>
+                </div>
+
+                <div class="education-item">
+                    <h3>CA Foundation Examination</h3>
+                    <p class="education-meta"><i class="fas fa-certificate"></i> Institute of Chartered Accountants of India | Dec 2022</p>
+                </div>
+
+                <div class="education-item">
+                    <h3>A-Levels & GCSE Equivalents</h3>
+                    <p class="education-meta"><i class="fas fa-school"></i> Kanha Makhan Millennium School, India | 2020 – 2022</p>
+                    <p class="education-details">A-Levels equivalent: 85% | GCSE equivalent: 93.2%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <p class="section-subtitle">Industry-recognized credentials enhancing technical expertise</p>
+            
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Bloomberg Market Concepts (BMC)</h3>
+                    <p class="cert-date"><i class="far fa-calendar-check"></i> Completed Oct 2026</p>
+                    <p class="cert-description">Self-paced Bloomberg certification covering economics, currencies and fixed income, taken on the Bloomberg Terminal</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3>Bloomberg Terminal Training</h3>
+                    <p class="cert-date"><i class="far fa-calendar-check"></i> Aug 2026</p>
+                    <p class="cert-description">Market data navigation, equity & fixed income analytics, economic indicators - University of East London</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Anti-Money Laundering Certification</h3>
+                    <p class="cert-date"><i class="far fa-calendar-check"></i> Aug 2026</p>
+                    <p class="cert-description">FCA/PRA/NCA regulatory frameworks, FATF global standards, CDD, EDD, SAR preparation, transaction monitoring, risk-based compliance approaches, AML governance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership & Volunteering -->
+    <section class="leadership">
+        <div class="container">
+            <h2 class="section-title">Leadership & Volunteering</h2>
+            <p class="section-subtitle">Demonstrating commitment to community and professional development</p>
+            
+            <div class="leadership-grid">
+                <div class="leadership-card">
+                    <h3><i class="fas fa-hands-helping" style="color: var(--accent-color); margin-right: 0.5rem;"></i> Tax and Accountancy Clinic Volunteer</h3>
+                    <p class="leadership-meta"><i class="far fa-calendar"></i> Jun 2026 – Ongoing | University of East London</p>
+                    <p>Student-run clinic providing free tax and accountancy support/guidance - relevant hands-on, UK-based volunteering reinforcing accounting/compliance skill set</p>
+                </div>
+
+                <div class="leadership-card">
+                    <h3><i class="fas fa-chalkboard-teacher" style="color: var(--accent-color); margin-right: 0.5rem;"></i> Volunteer Teacher</h3>
+                    <p class="leadership-meta"><i class="far fa-calendar"></i> Feb – May 2025 | Orphanage, India</p>
+                    <p>Designed and delivered structured maths and English lessons to 15+ children (ages 6–14) over 3 months, tracking measurable numeracy and literacy gains through weekly assessments</p>
+                </div>
+
+                <div class="leadership-card">
+                    <h3><i class="fas fa-heart" style="color: var(--accent-color); margin-right: 0.5rem;"></i> Blood Donation Camp Coordinator</h3>
+                    <p class="leadership-meta"><i class="far fa-calendar"></i> 2023 – 2024 | Dr Bhim Rao Ambedkar University</p>
+                    <p>Coordinated university blood donation camps across 2 consecutive years for 200+ participants - managing donor registration, volunteer scheduling and liaison with medical staff</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">Ready to contribute to your team's success</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:riyaachaudhary44@gmail.com">riyaachaudhary44@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+447887164644">+44 7887 164644</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://linkedin.com/in/riyaachaudhary" target="_blank">linkedin.com/in/riyaachaudhary</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>London, UK</span>
+                </div>
+            </div>
+
+            <div class="download-cv">
+                <a href="#" class="btn btn-primary" style="background: white; color: var(--primary-color);" onclick="alert('CV download would be linked here')">
+                    <i class="fas fa-download"></i> Download Full CV (PDF)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Riya Chaudhary. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Built with passion for financial excellence</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.competency-card, .project-card, .cert-card, .leadership-card, .education-item').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
